@@ -1,0 +1,27 @@
+  html,body{margin:0;height:100%;}
+  body{background:#8E989B;overflow-x:hidden;overflow-y:auto;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;}
+  svg.deck{display:block;touch-action:pan-y;
+    --i1:#1C1C1C;--i2:#3B3B3B;--i3:#7A7A7A;--rust:.5;--polish:.5;--pa:0;--turns:0;--jaw:-38deg;}
+  .jaw{transform-box:view-box;transform-origin:0 0;
+       transform:translate(var(--hx),var(--hy)) rotate(calc(-1 * var(--jaw,-38deg))) translate(calc(-1*var(--hx)),calc(-1*var(--hy)));
+       transition:transform 180ms cubic-bezier(.2,.9,.3,1.15);}
+  .w1{opacity:clamp(0,var(--turns,0),1)}
+  .w2{opacity:clamp(0,calc(var(--turns,0) - 1),1)}
+  .w3{opacity:clamp(0,calc(var(--turns,0) - 2),1)}
+  .w4{opacity:clamp(0,calc(var(--turns,0) - 3),1)}
+  .w5{opacity:clamp(0,calc(var(--turns,0) - 4),1)}
+  .shadow{fill:#5F6669;opacity:.45}
+  .contact{fill:#1d2022;opacity:.5}
+  .mottle{mix-blend-mode:overlay;opacity:.5;pointer-events:none}
+  .st{font-family:'Allerta Stencil','Stencil',Impact,sans-serif;font-weight:400}
+  .cp{font-family:'Courier Prime','Courier New',monospace}
+  text{pointer-events:none}
+  .hit,.tgt{stroke:none;cursor:pointer;outline:none}
+  .hit,.tgt:not(.panelBack){fill:transparent}
+  .hit:focus,.hit:focus-visible,.tgt:focus,.tgt:focus-visible{outline:none}
+  .tgt.strip{touch-action:none;cursor:ew-resize}
+  .xf{transition:opacity 200ms linear}
+  .run{will-change:auto}
+  .turns,.turnsh{transition:opacity 120ms linear}
+  .noanim .jaw,.noanim .xf,.noanim .run,.noanim .turns,.noanim .turnsh{transition:none!important}
+  #kbd{position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none;border:0;padding:0;margin:0;font-size:16px;background:transparent;color:transparent}
