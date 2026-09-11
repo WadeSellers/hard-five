@@ -118,11 +118,18 @@ class Chrome:
         with open(path, "wb") as f: f.write(base64.b64decode(r["data"]))
         return path
     # --- input: mouse events raise pointer events with pointerType mouse; touch events raise touch pointers ---
+    def front(self):
+        """headless Chrome does not deliver input to a background tab; bring this one forward first"""
+        try: self.cmd("Page.bringToFront")
+        except Exception: pass
+        time.sleep(0.05)
     def touch(self, x, y, hold=0.0):
+        self.front()
         self.cmd("Input.dispatchTouchEvent", type="touchStart", touchPoints=[{"x": x, "y": y}])
         if hold: time.sleep(hold)
         self.cmd("Input.dispatchTouchEvent", type="touchEnd", touchPoints=[])
     def drag(self, x, y, dx, steps=12, dt=0.03):
+        self.front()
         self.cmd("Input.dispatchTouchEvent", type="touchStart", touchPoints=[{"x": x, "y": y}])
         for i in range(1, steps + 1):
             time.sleep(dt); self.cmd("Input.dispatchTouchEvent", type="touchMove", touchPoints=[{"x": x + dx * i / steps, "y": y}])

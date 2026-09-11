@@ -4,3 +4,6 @@ proto/.prof-*/
 proto/.cdp-profile/
 __pycache__/
 .DS_Store
+test/shots/
+.cdp-profile/
+__pycache__/

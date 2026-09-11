@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Hard Five. A crew is one document plus one document per day. Anyone signed in (anonymous sign-in is enough) who
+    // knows the crew id can read and write that crew; the crew id is the only secret. The list of crews cannot be read.
+    match /crews/{crewId} {
+      allow get, create, update: if request.auth != null;
+      allow list, delete: if false;
+      match /days/{day} {
+        allow read, create, update: if request.auth != null;
+        allow delete: if false;
+      }
+    }
+  }
+}

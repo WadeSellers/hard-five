@@ -1,0 +1,37 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Hard Five icon</title>
+<style>
+  html,body{margin:0;background:#8E989B;width:100%;height:100%;overflow:hidden}
+  svg{display:block;width:100vw;height:100vh;--i1:#1C1C1C;--i2:#3B3B3B;--i3:#7A7A7A;--rust:.45;--polish:.45;--pa:0;--turns:0;--jaw:-38deg}
+  .w1,.w2,.w3,.w4,.w5{opacity:0}
+</style>
+<!-- One black stud link on the haze-grey deck, rendered by headless Chrome at exact sizes (tools/icons.py). The link symbols are the app's own. -->
+<svg id="icon" xmlns="http://www.gstatic.com/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="grit" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 .45  0 0 0 0 .49  0 0 0 0 .5  .4 .4 .4 0 -.3"/>
+    </filter>
+    <filter id="mottleF" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".028" numOctaves="3" seed="11" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 .5  0 0 0 0 .55  0 0 0 0 .56  .3 .3 .3 0 -.1"/>
+    </filter>
+  </defs>
+  <rect width="100" height="100" fill="#8E989B"/>
+  <rect width="100" height="100" filter="url(#mottleF)"/>
+  <rect width="100" height="100" filter="url(#grit)"/>
+  <g id="symbols"></g>
+  <!-- shadow: the link silhouette sheared by a 13:00 sun, then the link itself, 1.6x the phone link, centred -->
+  <use href="#sil-flat" class="shadow" transform="translate(50,50) scale(2.35) matrix(1,0,0.18,0.56,1.6,5)" fill="#5F6669" opacity=".45"/>
+  <use href="#lk-flat" transform="translate(50,50) scale(2.35)"/>
+</svg>
+<script>
+  // pull the symbol defs out of the app's index.html so the icon is the app's own link, byte for byte
+  fetch('../index.html').then(r => r.text()).then(html => {
+    const m = html.match(/<defs>[\s\S]*?<\/defs>/);
+    const holder = document.getElementById('symbols');
+    holder.outerHTML = m[0];
+    document.documentElement.setAttribute('data-ready', '1');
+  });
+</script>
