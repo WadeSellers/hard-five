@@ -1,0 +1,6 @@
+test/.prof-*/
+test/.cdp-profile/
+proto/.prof-*/
+proto/.cdp-profile/
+__pycache__/
+.DS_Store
