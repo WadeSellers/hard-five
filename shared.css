@@ -1,0 +1,65 @@
+/* Shared shell for the 75 Hard Crew legal and support pages.
+   Palette is lifted from the app's Theme so the pages and the product look
+   like the same thing. */
+:root {
+  color-scheme: light dark;
+  --ground: #F3F0E9;
+  --surface: #FFFFFF;
+  --line: #DFDAD0;
+  --ink: #12151C;
+  --ink2: #5C636F;
+  --ink3: #6E7683;
+  --ember: #FF6B57;
+  --lime: #B8E062;
+  --sky: #5AC8FA;
+  --gold: #B8840C;
+  --violet: #C79BFF;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0B0E14;
+    --surface: #151A23;
+    --line: #2A3241;
+    --ink: #F3EFE6;
+    --ink2: #A9B0BD;
+    --ink3: #8A92A1;
+    --gold: #F5C542;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 16px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+.tiles { display: flex; gap: 6px; margin-bottom: 1.5rem; }
+.tiles i { width: 22px; height: 22px; border-radius: 6px; display: block; }
+.eyebrow {
+  font-size: .72rem; font-weight: 700; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--ink3); margin: 0 0 .5rem;
+}
+h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); line-height: 1.1; margin: 0 0 .4rem; letter-spacing: -.02em; }
+h2 { font-size: 1.15rem; margin: 2.4rem 0 .6rem; letter-spacing: -.01em; }
+h3 { font-size: .98rem; margin: 1.5rem 0 .4rem; color: var(--ink); }
+p, li { color: var(--ink2); }
+p { margin: 0 0 1rem; }
+ul { margin: 0 0 1rem; padding-left: 1.15rem; }
+li { margin-bottom: .4rem; }
+strong { color: var(--ink); font-weight: 650; }
+a { color: var(--ink); text-underline-offset: 3px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; padding: 1.15rem 1.25rem; margin: 1.4rem 0;
+}
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+.stamp { color: var(--ink3); font-size: .86rem; margin-top: .6rem; }
+footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--ink3); font-size: .86rem; }
+footer a { color: var(--ink3); }
+table { width: 100%; border-collapse: collapse; margin: 0 0 1rem; font-size: .94rem; }
+th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--ink); font-weight: 650; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; }
+td { color: var(--ink2); }
+.scroll { overflow-x: auto; }
